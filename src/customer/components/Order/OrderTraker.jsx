@@ -20,6 +20,9 @@ const OrderTraker = ({activeStep}) => {
                 </Step>
                 )}
             </Stepper>
+            <div>
+                <h1> Your order has been placed</h1>
+            </div>
         </div>
     )
 }

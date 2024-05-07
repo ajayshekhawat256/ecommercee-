@@ -10,6 +10,9 @@ import ProductDetails from '../customer/components/ProductDetails/ProductDetails
 import Checkout from '../customer/components/Checkout/Checkout'
 import Order from '../customer/components/Order/Order'
 import OrderDetail from '../customer/components/Order/OrderDetail'
+import OrderTraker from '../customer/components/Order/OrderTraker'
+import RateProduct from '../customer/components/ReviewProduct/RateProduct'
+
 
 const CustomerRouters = () => {
     return (
@@ -19,24 +22,26 @@ const CustomerRouters = () => {
             </div>
 
             <Routes>
-                <Route path='/' element={<HomePage/>}></Route>
+                <Route path='/' element={<HomePage />}></Route>
                 <Route path='/login' element={<HomePage />}></Route>
                 <Route path='/register' element={<HomePage />}></Route>
-                <Route path='/cart' element={<Cart/>}></Route>
-                <Route path='/:lavelOne/:lavelTwo/:lavelThree' element={<Product/>}></Route>
-                <Route path='/product/:productId' element={<ProductDetails/>}></Route>
-                <Route path='/checkout' element={<Checkout/>}></Route>
-                <Route path='/account/order' element={<Order/>}></Route>
-                <Route path='/account/order/:orderId' element={<OrderDetail/>}></Route>
+                <Route path='/cart' element={<Cart />}></Route>
+                <Route path='/:lavelOne/:lavelTwo/:lavelThree' element={<Product />}></Route>
+                <Route path='/product/:productId' element={<ProductDetails />}></Route>
+                <Route path='/checkout' element={<Checkout />}></Route>
+                <Route path='/account/order' element={<Order />}></Route>
+                <Route path='/account/order/:orderId' element={<OrderDetail />}></Route>
+                <Route path="/account/rate/:productId" element={<RateProduct  />}></Route>
+                <Route path='/Order' element={<OrderTraker />}></Route>
                 {/* <Product/> */}
                 {/* <ProductDetails/> */}
                 {/* <Cart/> */}
-                {/* <Checkout/> */} 
+                {/* <Checkout/> */}
                 {/* <Order/> */}
                 {/* <OrderDetail /> */}
             </Routes>
             <div>
-                <Footer/>
+                <Footer />
             </div>
         </div>
     )

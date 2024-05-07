@@ -75,6 +75,7 @@ export default function ProductDetails() {
     const dispatch = useDispatch();
     const { customersProduct } = useSelector((store) => store)
     const jwt=localStorage.getItem("jwt");
+    const {review}=useSelector((store)=>store)
 
     console.log("----Params" + params.productId);
 
@@ -292,7 +293,7 @@ export default function ProductDetails() {
                         <Grid container spacing={7}>
                             <Grid item xs={7}>
                                 <div className='space-y-5'>
-                                    {[1, 1, 1].map((item) => <ProductReviewCard />)}
+                                    {customersProduct.product?.reviews.map((item,i) => <ProductReviewCard item={item}/>)}
                                 </div>
                             </Grid>
                             <Grid item xs={5}>

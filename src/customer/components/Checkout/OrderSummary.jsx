@@ -4,7 +4,7 @@ import CartItem from '../Cart/CartItem'
 import { Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrderById } from '../../../State/Order/Action'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const OrderSummary = () => {
     const dispatch = useDispatch();
@@ -12,6 +12,7 @@ const OrderSummary = () => {
     const { order } = useSelector((store) => store)
     const searchParams = new URLSearchParams(location.search);
     const orderId = searchParams.get("order_id");
+    const navigate=useNavigate();
 
     useEffect(() => {
         dispatch(getOrderById(orderId));
@@ -50,7 +51,7 @@ const OrderSummary = () => {
                                     <span className='text-green-600 font-bold'>{order.order?.totalDiscountedPrice}</span>
                                 </div>
                             </div>
-                            <Button variant="contained" className='w-full mt-15' sx={{ px: "2.5rem", py: ".7rem", bgcolor: "#9155fd" }}>
+                            <Button variant="contained" onClick={() => { navigate('/Order')}} className='w-full mt-15' sx={{ px: "2.5rem", py: ".7rem", bgcolor: "#9155fd" }}>
                                 Checkout
                             </Button>
                         </div>

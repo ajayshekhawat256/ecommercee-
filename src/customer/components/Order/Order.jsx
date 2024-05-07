@@ -1,15 +1,17 @@
 import { Grid } from '@mui/material'
 import React, { useEffect } from 'react'
 import OrderCard from './OrderCard';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrderHistory } from '../../../State/Order/Action';
 
 
 const Order = () => {
     const dispatch = useDispatch();
+    const {order}=useSelector((store)=>store)
     const jwt = localStorage.getItem("jwt");
 
     useEffect(()=>{
-        dispatch()
+     dispatch(getOrderHistory())
     },[])
 
     const orderStatus = [
@@ -34,7 +36,7 @@ const Order = () => {
                                         defaultChecked={option.checked}
                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
-                                    <label className="ml-3 text-sm text-gray-600" htmlFor={option.value}>
+                                    <label className="ml-3 text-sm text-gray-600" htmlFor={option.value}> 
                                         {option.label}
                                     </label>
                                 </div>
@@ -44,12 +46,9 @@ const Order = () => {
                     </div>
                 </Grid>
                 <Grid item xs={9}>
-                    <div className='space-y-5'>
-                        {[1, 1, 1, 1].map((item) =>
-                            <OrderCard />
-                        )}
-                    </div>
-
+                    {order.orders?.length > 0 && order.orders?.map((order) => {
+                        return order?.orderItems?.map((item, index) => <OrderCard item={item} order={order} />)
+                    })}
                 </Grid>
             </Grid>
         </div>
